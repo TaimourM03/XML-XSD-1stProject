@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="AuthorList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Author" minOccurs="1" maxOccurs="100"/>
+      </xs:sequence>
+      <xs:attribute name="CompleteYN" type="xs:string" default="Y"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Author">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice>
+          <xs:element name="LastName" type="xs:string"/>
+          <xs:element name="SureName" type="xs:string"/>
+        </xs:choice>
+        <xs:element name="ForeName">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:pattern value="[A-Z]{1} [A-Z]{1}"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Initials">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:pattern value="[A-Z]{1}[A-Z]{1}"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="ValidYN" type="xs:string" default="Y"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

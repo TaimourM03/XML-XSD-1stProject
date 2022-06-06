@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="PubmedArticle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="MedlineCitation"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MedlineCitation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="PMID"/>
+        <xs:element ref="DateCompleted" maxOccurs="1"/>
+        <xs:element ref="DateRevised" maxOccurs="1"/>
+        <xs:element ref="Article"/>
+      </xs:sequence>
+      <xs:attribute name="Owner" type="xs:string"/>
+      <xs:attribute name="Status" type="xs:string" default="MEDLINE" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PMID">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="Version" type="xs:string"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DateCompleted">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Year" maxOccurs="1" default="2012">
+          <xs:simpleType>
+            <xs:restriction base="xs:integer">
+              <xs:minInclusive value="1500"/>
+              <xs:maxInclusive value="2022"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Month" maxOccurs="1" default="12">
+          <xs:simpleType>
+            <xs:restriction base="xs:integer">
+              <xs:minInclusive value="01"/>
+              <xs:maxInclusive value="12"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Day" maxOccurs="1" default="12">
+          <xs:simpleType>
+            <xs:restriction base="xs:integer">
+              <xs:minInclusive value="01"/>
+              <xs:maxInclusive value="31"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DateRevised">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Year" maxOccurs="1" default="2012">
+          <xs:simpleType>
+            <xs:restriction base="xs:integer">
+              <xs:minInclusive value="1500"/>
+              <xs:maxInclusive value="2022"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Month" maxOccurs="1" default="12">
+          <xs:simpleType>
+            <xs:restriction base="xs:integer">
+              <xs:minInclusive value="01"/>
+              <xs:maxInclusive value="12"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Day" maxOccurs="1" default="12">
+          <xs:simpleType>
+            <xs:restriction base="xs:integer">
+              <xs:minInclusive value="01"/>
+              <xs:maxInclusive value="31"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Article">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Journal"/>
+        <xs:element name="ArticleTitle" type="xs:string"/>
+        <xs:element ref="Pagination"/>
+        <xs:element ref="AuthorList"/>
+      </xs:sequence>
+      <xs:attribute name="PubModel" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Journal">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ISSN"/>
+        <xs:element ref="JournalIssue"/>
+        <xs:element name="Title" type="xs:string"/>
+        <xs:element name="ISOAbbreviation" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="paraISSN">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{4}-[0-9]{4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ISSN">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="paraISSN">
+          <xs:attribute name="IssnType" type="xs:string" default="Print" use="optional"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="JournalIssue">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Volume" type="xs:integer"/>
+        <xs:element name="Issue" type="xs:integer"/>
+        <xs:element ref="PubDate"/>
+      </xs:sequence>
+      <xs:attribute name="CitedMedium" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PubDate">
+    <xs:complexType>
+      <xs:all>
+        <xs:element name="Year" type="xs:integer"/>
+        <xs:element name="Month">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="Jan"/>
+              <xs:enumeration value="Feb"/>
+              <xs:enumeration value="Mar"/>
+              <xs:enumeration value="Apr"/>
+              <xs:enumeration value="May"/>
+              <xs:enumeration value="Jun"/>
+              <xs:enumeration value="Jul"/>
+              <xs:enumeration value="Aug"/>
+              <xs:enumeration value="Sep"/>
+              <xs:enumeration value="Oct"/>
+              <xs:enumeration value="Nov"/>
+              <xs:enumeration value="Dec"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Day" minOccurs="0"/>
+      </xs:all>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Pagination">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="MedlinePgn" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AuthorList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Author" minOccurs="1" maxOccurs="100"/>
+      </xs:sequence>
+      <xs:attribute name="CompleteYN" type="xs:string" default="Y"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Author">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice>
+          <xs:element name="LastName" type="xs:string"/>
+          <xs:element name="SureName" type="xs:string"/>
+        </xs:choice>
+        <xs:element name="ForeName">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:pattern value="[A-Z]{1} [A-Z]{1}"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Initials">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:pattern value="[A-Z]{1}[A-Z]{1}"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="ValidYN" type="xs:string" default="Y"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

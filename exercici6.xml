@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ChemicalList>
+  <Chemical>
+    <RegistryNumber>0</RegistryNumber>
+    <NameOfSubstance UI="D005561">Formates</NameOfSubstance>
+  </Chemical>
+  <Chemical>
+    <RegistryNumber>142M471B3J</RegistryNumber>
+    <NameOfSubstance UI="D002245">Carbon Dioxide</NameOfSubstance>
+  </Chemical>
+  <Chemical>
+    <RegistryNumber>EC 1.2.-</RegistryNumber>
+    <NameOfSubstance UI="D000445">Aldehyde Oxidoreductases</NameOfSubstance>
+  </Chemical>
+  <Chemical>
+    <RegistryNumber>Y4S76JWI15</RegistryNumber>
+    <NameOfSubstance UI="D000432">Methanol</NameOfSubstance>
+  </Chemical>
+</ChemicalList>

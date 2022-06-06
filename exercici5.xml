@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuthorList CompleteYN="Y">
+  <Author ValidYN="Y">
+    <LastName>Makar</LastName>
+    <ForeName>A B</ForeName>
+    <Initials>AB</Initials>
+  </Author>
+  <Author ValidYN="Y">
+    <LastName>McMartin</LastName>
+    <ForeName>K E</ForeName>
+    <Initials>KE</Initials>
+  </Author>
+  <Author ValidYN="Y">
+    <LastName>Palese</LastName>
+  	<ForeName>M T</ForeName>
+  	<Initials>MT</Initials>
+  </Author>
+  <Author ValidYN="Y">
+    <LastName>Tephly</LastName>
+  	<ForeName>T R</ForeName>
+  	<Initials>TR</Initials>
+  </Author>
+</AuthorList>

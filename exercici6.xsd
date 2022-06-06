@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ChemicalList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Chemical" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Chemical">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="RegistryNumber" type="xs:integer"/>
+        <xs:element ref="NameOfSubstance"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NameOfSubstance">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="UI">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="D00[0-9]{4}"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
